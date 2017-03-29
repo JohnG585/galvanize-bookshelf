@@ -53,10 +53,12 @@ router.post('/books', function(req, res, next) {
   });
 })
 router.patch('/books/:id', function(req, res, next) {
+  let id = req.params.id;
   let body = req.body;
   knex('books')
   .orderBy('title')
   .returning(['id', 'title', 'author', 'genre', 'description', 'cover_url'])
+  .where('id', id)
   .update({ title: body.title, genre:body.genre, author: body.author, description: body.description, cover_url: body.coverUrl })
   .then((book) => {
     res.send(humps.camelizeKeys(book[0]));
