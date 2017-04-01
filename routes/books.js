@@ -21,10 +21,10 @@ const router = express.Router();
 
 })
 router.get('/books/:id', function(req, res, next) {
-  const id = Number(req.params.id);
+  const id = req.params.id;
 
   knex('books')
-  .where('id', '=', id)
+  .where('id', id)
   .then((book) => {
     res.send(humps.camelizeKeys(book[0]));
   })
@@ -56,7 +56,6 @@ router.patch('/books/:id', function(req, res, next) {
   let id = req.params.id;
   let body = req.body;
   knex('books')
-  .orderBy('title')
   .returning(['id', 'title', 'author', 'genre', 'description', 'cover_url'])
   .where('id', id)
   .update({ title: body.title, genre:body.genre, author: body.author, description: body.description, cover_url: body.coverUrl })
