@@ -9,7 +9,7 @@ const knex = require('../knex');
 
 const bcrypt = require('bcrypt');
 
-router.get('/token', (req, res, next) => {
+router.get('/', (req, res, next) => {
     if (!req.cookies.token) {
       res.status(200).send(false);
     } else {
@@ -17,7 +17,7 @@ router.get('/token', (req, res, next) => {
     }
 });
 
-router.post('/token', (req, res, next) => {
+router.post('/', (req, res, next) => {
   if (!req.body.email) {
     next(boom.create(400, 'Email must not be blank'));
   }
@@ -45,7 +45,7 @@ router.post('/token', (req, res, next) => {
       }
     })
 });
-router.delete('/token', (req, res, next) => {
+router.delete('/', (req, res, next) => {
   res.clearCookie('token');
   res.status(200);
   res.send()

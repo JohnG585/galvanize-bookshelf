@@ -20,7 +20,7 @@ const router = express.Router();
     });
 
 })
-router.get('/books/:id', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
   const id = req.params.id;
 
   knex('books')
@@ -33,7 +33,7 @@ router.get('/books/:id', function(req, res, next) {
     knex.destroy();
   });
 })
-router.post('/books', function(req, res, next) {
+router.post('/', function(req, res, next) {
   const newBook = {
     title: req.body.title,
     author: req.body.author,
@@ -52,7 +52,7 @@ router.post('/books', function(req, res, next) {
     knex.destroy();
   });
 })
-router.patch('/books/:id', function(req, res, next) {
+router.patch('/:id', function(req, res, next) {
   let id = req.params.id;
   let body = req.body;
   knex('books')
@@ -66,7 +66,7 @@ router.patch('/books/:id', function(req, res, next) {
     knex.destroy();
   });
 });
-router.delete('/books/:id', function(req, res, next) {
+router.delete('/:id', function(req, res, next) {
   knex('books')
   .returning(['title', 'author', 'genre', 'description', 'cover_url'])
   .where('id', req.params.id)
