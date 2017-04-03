@@ -19,10 +19,10 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   if (!req.body.email) {
-    next(boom.create(400, 'Email must not be blank'));
+    return next(boom.create(400, 'Email must not be blank'));
   }
   if (!req.body.password) {
-    next(boom.create(400, 'Password must not be blank'));
+    return next(boom.create(400, 'Password must not be blank'));
   }
   knex('users')
     .where('email', req.body.email)

@@ -27,11 +27,11 @@ router.get(`/check`, (req, res, next) => {
     res.header('Content-Type', 'text/plain');
     res.status(401).send('Unauthorized');
   }
-  // let bookID = req.query.bookId;
+  let bookID = req.query.bookId;
 
-  // if (typeof bookID !== 'number') {
-  //   next(boom.create(400, 'Book ID must be an integer'));
-  // }
+  if (typeof bookID !== 'number') {
+    return next(boom.create(400, 'Book ID must be an integer'));
+  }
   else {
       let bookID = req.query.bookId;
     if (bookID === '1') {
