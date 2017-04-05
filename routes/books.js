@@ -8,7 +8,7 @@ const humps = require('humps');
 const router = express.Router();
 
 // YOUR CODE HERE
-  router.get('/books', function(req, res, next) {
+  router.get('/', function(req, res, next) {
   knex('books')
     .orderBy('title')
     .then((books) => {
