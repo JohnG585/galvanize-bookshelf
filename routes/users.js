@@ -20,12 +20,12 @@ router.post('/', ev(validations.post), (req, res, next) => {
           first_name: req.body.firstName,
           last_name: req.body.lastName,
           email: req.body.email,
-          hashed_password: hash
+          hashed_password: hashed_password
         }, '*');
     })
     .then((users) => {
       const user = users[0];
-      delete user.hash;
+      delete user.hashed_password;
       res.send(humps.camelizeKeys(user));
     })
     .catch((err) => {
