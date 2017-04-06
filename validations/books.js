@@ -8,6 +8,6 @@ module.exports.post = {
     genre: Joi.string().label('Genre').required(),
     author: Joi.string().label('Author').required(),
     description: Joi.string().label('Description').max(2000).required(),
-    cover_url: Joi.string().label('cover url').required()
+    cover_url: Joi.string().label('Cover URL').required()
   }
 };
