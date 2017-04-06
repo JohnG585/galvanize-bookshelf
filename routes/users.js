@@ -12,8 +12,7 @@ const validations = require('../validations/users');
 const router = express.Router();
 
 router.post('/', ev(validations.post), (req, res, next) => {
-  const salt = bcrypt.genSaltSync()
-  const hash = bcrypt.hashSync(req.body.password, salt)
+  bcrypt.hash(req.body.password, 12)
     .then((hashed_password) => {
       return knex('users')
         .insert({
