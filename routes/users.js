@@ -9,7 +9,7 @@ const bcrypt = require('bcrypt');
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
-router.post('/', (req, res, next) => {
+router.post('/', ev(validations.post), (req, res, next) => {
   bcrypt.hash(req.body.password, 12)
     .then((hashed_password) => {
       return knex('users')
