@@ -5,6 +5,7 @@ const humps = require('humps');
 const boom = require('boom');
 const ev = require('express-validation');
 const validations = require('../validations/users');
+require('dotenv').config();
 
 const router = express.Router();
 const knex = require('../knex');
