@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const humps = require('humps');
 const boom = require('boom');
 const ev = require('express-validation');
-const validations = require('../validations/users');
+const validations = require('../validations/tokens');
 require('dotenv').config();
 
 const router = express.Router();
