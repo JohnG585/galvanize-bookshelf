@@ -3,6 +3,8 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const humps = require('humps');
 const boom = require('boom');
+const ev = require('express-validation');
+const validations = require('../validations/users');
 
 const router = express.Router();
 const knex = require('../knex');

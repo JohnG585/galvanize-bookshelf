@@ -4,6 +4,8 @@ const express = require('express');
 const humps = require('humps');
 const knex = require('../knex');
 const boom = require('boom');
+const ev = require('express-validation');
+const validations = require('../validations/users');
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
