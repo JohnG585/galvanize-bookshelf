@@ -20,7 +20,7 @@ router.get('/', (req, res, next) => {
     }
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', ev(validations.post), (req, res, next) => {
   if (!req.body.email) {
     return next(boom.create(400, 'Email must not be blank'));
   }

@@ -35,7 +35,7 @@ router.get('/:id', function(req, res, next) {
     knex.destroy();
   });
 })
-router.post('/', function(req, res, next) {
+router.post('/', ev(validations.post), function(req, res, next) {
   const newBook = {
     title: req.body.title,
     author: req.body.author,
