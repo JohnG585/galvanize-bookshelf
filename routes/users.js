@@ -5,11 +5,13 @@ const knex = require('../knex');
 const humps = require('humps');
 const boom = require('boom');
 const bcrypt = require('bcrypt');
+const ev = require('express-validation');
+const validations = require('../validations/users');
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
-router.post('/', (req, res, next) => {
+router.post('/', ev(validations.post), (req, res, next) => {
   bcrypt.hash(req.body.password, 12)
     .then((hashed_password) => {
       return knex('users')

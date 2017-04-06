@@ -3,6 +3,9 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const humps = require('humps');
 const boom = require('boom');
+const ev = require('express-validation');
+const validations = require('../validations/users');
+require('dotenv').config();
 
 const router = express.Router();
 const knex = require('../knex');
@@ -17,7 +20,7 @@ router.get('/', (req, res, next) => {
     }
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', ev(validations.post), (req, res, next) => {
   if (!req.body.email) {
     return next(boom.create(400, 'Email must not be blank'));
   }
