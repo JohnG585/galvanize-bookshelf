@@ -4,10 +4,10 @@ const Joi = require('joi');
 
 module.exports.post = {
   body: {
-    title: Joi.string().required(),
-    genre: Joi.string().required(),
-    author: Joi.string().required(),
-    description: Joi.string().max(2000).required(),
-    cover_url: Joi.string().required()
+    title: Joi.string().label('Title').required(),
+    genre: Joi.string().label('Genre').required(),
+    author: Joi.string().label('Author').required(),
+    description: Joi.string().label('Description').max(2000).required(),
+    cover_url: Joi.string().label('cover url').required()
   }
 };
