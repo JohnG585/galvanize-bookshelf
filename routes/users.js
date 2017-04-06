@@ -25,7 +25,7 @@ router.post('/', ev(validations.post), (req, res, next) => {
     })
     .then((users) => {
       const user = users[0];
-      delete user.hashed_password;
+      delete user.hash;
       res.send(humps.camelizeKeys(user));
     })
     .catch((err) => {
